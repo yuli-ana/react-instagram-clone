@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<style>
+    .box {
+        border: 1px solid #000;
+    }
+
+    .box--small {
+        width: 200px;
+        height: 200px;
+    }
+
+    .box--medium {
+        width: 300px;
+        height: 300px;
+    }
+
+    .box--large {
+        width: 400px;
+        height: 400px;
+    }
+</style>
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type='text/babel'>
+
+        function Box({ size, style, ...rest }) {
+            const sizeClassName = size ? `box--${size}` : '';
+            return (
+                <div className={`box  ${sizeClassName}`} style={{ fontStyle: 'italic', ...style }} {...rest} />
+            );
+        }
+
+        const element = (
+            <div>
+                <Box size="small" style={{ fontStyle: 'Italic', backgroundColor: 'lightblue' }}>small box</Box>
+                <Box size="medium" style={{ fontStyle: 'Italic', backgroundColor: 'yellow' }}>medium box</Box>
+                <Box size="large" style={{ fontStyle: 'Italic', backgroundColor: 'orange' }}>large box</Box>
+            </div>
+        )
+
+        ReactDOM.render(element, document.getElementById('root'));
+
+
+    </script>
+</body>
+
+</html>

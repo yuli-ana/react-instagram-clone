@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type='text/babel'>
+
+        const state = { eventCount: 0, userName: '' };
+
+        function App() {
+
+
+
+            function handleClick(e) {
+                console.log(e);
+                setState({ eventCount: state.eventCount + 1 })
+            }
+
+            function handleChange(e) {
+                console.log(e);
+                setState({ eventCount: state.eventCount + 1 })
+            }
+
+            return (
+                <div>
+                    <p>There have been {state.eventCount} events</p>
+                    <p><button onClick={handleClick}></button></p>
+                    <p>You types {state.userName}</p>
+                    <p><input onChange={handleChange}></p>
+                </div>
+            )
+
+
+        }
+
+
+        function renderApp(){
+                        ReactDOM.render(<App />, document.getElementById('root'));
+        }
+
+
+renderApp();
+
+
+    </script>
+</body>
+
+</html>
