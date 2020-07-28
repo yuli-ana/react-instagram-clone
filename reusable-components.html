@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16.7.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script type='text/babel'>
+
+        const Message = props => <div className="message">{props.msg}</div>;
+
+        const element = (
+            <div className="container">
+                <Message>Hello world'</Message>
+                <Message children='Goodbye world' />
+            </div>
+        )
+
+        console.log(<div>Hello world</div>);
+        console.log(<Message>Hello world</Message>);
+
+        ReactDOM.render(element, document.getElementById('root'));
+
+
+    </script>
+</body>
+
+</html>
