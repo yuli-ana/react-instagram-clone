@@ -7,7 +7,7 @@ const SearchParams = () => {
     // State cannot go inside of statement and for loop/conditional
     const [location, setLocation] = useState("Toronto, ON");
     // const [animal, setAnimal] = useState('dog');
-    const [breed, setBreed] = useState({});
+    // const [breed, setBreed] = useState({});
     const [breeds, setBreeds] = useState([]);
     const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
     const [breed, BreedDropdown] = useDropdown("Breed", "", breeds);
@@ -17,10 +17,10 @@ const SearchParams = () => {
         setBreeds([]);
         setBreed("");
 
-        pet.breeds(animal).then(({ breeds }) => {
-            const breedStrings = breeds.map(({ name }) => name);
-            setBreeds(breedStrings);
-        }, console.error)
+        // pet.breeds(animal).then(({ breeds }) => {
+        //     const breedStrings = breeds.map(({ name }) => name);
+        //     setBreeds(breedStrings);
+        // })
     })
 
 
