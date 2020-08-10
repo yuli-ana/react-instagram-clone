@@ -11,8 +11,8 @@ function CreatePost({ user, handleAddPost }) {
     function handleSubmit(e) {
         e.preventDefault();
         // Store all values in an object
-        const post = { content, image, user };
-        handleAddPost(post);
+        const post = { content, image, user, id: Date.now() };
+        // handleAddPost(post);
 
         // const newPosts = [post, ...posts];
         // setPosts(newPosts)
