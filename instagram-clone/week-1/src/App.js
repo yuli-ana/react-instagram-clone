@@ -3,6 +3,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import CreatePost from './components/CreatePost';
 import PostList from './components/PostList';
+import postReducer from './reducer';
 
 // Helps to pass data down on
 // Every context is an object which consists of 2 properties: UserContext.provider &  UserContext.consumer
@@ -17,7 +18,8 @@ function App() {
     const [user, setUser] = useState('');
     // const [posts, setPosts] = useState([]);
     const initialPostState = React.useContext(PostContext);
-   const [state, dispatch] = React.useReducer(() => initialPostState);
+    // const [state, dispatch] = React.useReducer(() => initialPostState);
+    const [state, dispatch] = React.useReducer(postReducer, initialPostState);
 
 
     useEffect(() => {
@@ -31,10 +33,10 @@ function App() {
     // For 2 argument tell when to recreate this function, when our posts array changes
     // React.useCallback memoized callback
     // Usecallback remembers handleAddPost object and doesn't redeclare handleAddPost each re-render, only if dependencies have changed
-    const handleAddPost = useCallback(
-        newPost => {
-            setPosts([newPost, ...posts]);
-        }, [posts]);
+    // const handleAddPost = useCallback(
+    //     newPost => {
+    //         setPosts([newPost, ...posts]);
+    //     }, [posts]);
 
 
 
@@ -45,11 +47,15 @@ function App() {
 
 
     return (
-        <UserContext.Provider value={user}>
-            <Header user={user} setUser={setUser} />
-            <CreatePost user={user} handleAddPost={handleAddPost} posts={posts} />
-            <PostList posts={posts} />
+        <PostContext.provider value={{ state, dispatch }}>
+            <UserContext.Provider value={user}>
+                <Header user={state.user} setUser={setUser} />
+                <CreatePost user={state.user}
+            // handleAddPost={handleAddPost}
+            // posts={posts} />
+            <PostList posts={state.posts} />
         </UserContext.Provider>
+        </PostContext.provider>
     );
 }
 export default App;
