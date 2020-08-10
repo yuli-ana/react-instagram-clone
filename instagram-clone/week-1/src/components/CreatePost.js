@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { PostContext } from '../App';
 
 
 function CreatePost({ user, handleAddPost }) {
+    const { dispatch } = React.useContext(PostContext);
     const [content, setContent] = useState('');
     const [image, setImage] = useState(null);
     const imageInputRef = React.useRef();
@@ -15,6 +17,7 @@ function CreatePost({ user, handleAddPost }) {
         // const newPosts = [post, ...posts];
         // setPosts(newPosts)
         // setPosts(prevPosts => ([post, ...prevPosts]));
+        dispatch({ type: "ADD_POST", payload: { post } });
         setContent("");
         imageInputRef.current.value = '';
     }

@@ -49,12 +49,10 @@ function App() {
     return (
         <PostContext.provider value={{ state, dispatch }}>
             <UserContext.Provider value={user}>
-                <Header user={state.user} setUser={setUser} />
-                <CreatePost user={state.user}
-            // handleAddPost={handleAddPost}
-            // posts={posts} />
-            <PostList posts={state.posts} />
-        </UserContext.Provider>
+                <Header user={user} setUser={setUser} />
+                <CreatePost user={user} />
+                <PostList posts={state.posts} />
+            </UserContext.Provider>
         </PostContext.provider>
     );
 }
