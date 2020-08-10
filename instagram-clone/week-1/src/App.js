@@ -8,10 +8,16 @@ import PostList from './components/PostList';
 // Every context is an object which consists of 2 properties: UserContext.provider &  UserContext.consumer
 // named export 
 export const UserContext = React.createContext();
+export const PostContext = React.createContext({
+    posts: [],
+});
+
 
 function App() {
     const [user, setUser] = useState('');
-    const [posts, setPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
+    const initialPostState = React.useContext(PostContext);
+   const [state, dispatch] = React.useReducer(() => initialPostState);
 
 
     useEffect(() => {
